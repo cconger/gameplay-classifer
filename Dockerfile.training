@@ -1,0 +1,15 @@
+FROM nvcr.io/nvidia/tensorflow:21.03-tf2-py3
+
+ARG DEBIAN_FRONTEND=noninteractive
+ENV PYTHONUNBUFFERED=true
+
+RUN apt-get update && apt-get install -y ffmpeg
+
+RUN pip install Pillow pandas numpy
+
+COPY train.py .
+
+# Expects a volume mount with the training data
+ENV TRAIN_MOUNT_POINT="/play"
+
+CMD ["python", "./train.py"]

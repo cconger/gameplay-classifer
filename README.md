@@ -27,3 +27,6 @@ docker build . -t annotate:latest
 
 docker run -it --rm --gpus all --mount type=bind,source"/path/to/cache",target=/cache --ipc=host python label_video.py <VIDEO_ID>
 ```
+
+### Caveat
+This code might not run as is, this is just a reference/checkpoint of my in progress work.
